@@ -261,19 +261,9 @@ export default function App() {
         <section id="about" className="relative pt-6 sm:pt-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-7 space-y-6">
-              <div className="flex items-center gap-3">
-                <div className="relative group shrink-0">
-                  <img
-                    src="/ProfilePhoto.jpg"
-                    alt="Utkarsh Kulkarni"
-                    className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover ring-2 ring-emerald-400/80 shadow-lg shadow-emerald-500/20"
-                  />
-                  <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-400 border-2 border-[#090d16] rounded-full" />
-                </div>
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-xs font-mono text-emerald-400">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>Backend Specialist • Full-Stack Engineer</span>
-                </div>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-xs font-mono text-emerald-400">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Backend Specialist • Full-Stack Engineer</span>
               </div>
 
               <div className="space-y-3">
@@ -381,46 +371,62 @@ export default function App() {
               </div>
             </div>
 
-            {/* Right Column: Profile Photo Card & Interactive Terminal */}
-            <div className="lg:col-span-5 space-y-4">
-              {/* Profile Photo Identity Card */}
-              <div className="rounded-2xl border border-slate-800 bg-[#0d121f]/90 p-4 sm:p-5 backdrop-blur shadow-xl relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
-                <div className="flex items-center gap-4">
-                  <div className="relative shrink-0">
-                    <img
-                      src="/ProfilePhoto.jpg"
-                      alt="Utkarsh Kulkarni"
-                      className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover ring-2 ring-emerald-500/50 shadow-xl shadow-emerald-500/25 group-hover:scale-105 transition-all duration-300"
-                    />
-                    <div className="absolute -bottom-1 -right-1 px-2 py-0.5 rounded-full bg-emerald-500 text-slate-950 text-[10px] font-bold font-mono tracking-tight flex items-center gap-1 shadow">
-                      <span className="w-1.5 h-1.5 rounded-full bg-slate-950 animate-pulse" />
-                      ACTIVE
-                    </div>
+            {/* Right Column: Prominent Portrait Spotlight & Interactive Terminal */}
+            <div className="lg:col-span-5 space-y-6">
+              {/* Prominent High-Visibility Portrait Card */}
+              <div className="relative mx-auto max-w-[340px] rounded-3xl p-2.5 bg-gradient-to-b from-slate-700/40 via-slate-800/20 to-slate-900/60 border border-slate-700/60 shadow-2xl shadow-emerald-500/10 group">
+                {/* Background Ambient Glow */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 via-cyan-500/10 to-emerald-500/20 rounded-3xl blur-xl opacity-60 group-hover:opacity-100 transition duration-500 -z-10" />
+
+                <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900/90 border border-slate-800">
+                  <img
+                    src="/ProfilePhoto.jpg"
+                    alt="Utkarsh Kulkarni"
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+
+                  {/* Gradient Fade for text contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#090d16] via-[#090d16]/30 to-transparent opacity-90 pointer-events-none" />
+
+                  {/* Floating Availability Pill */}
+                  <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#090d16]/85 backdrop-blur-md border border-emerald-500/40 text-[11px] font-mono text-emerald-300 shadow-lg">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Open to Roles</span>
                   </div>
-                  <div className="space-y-1.5 min-w-0">
-                    <div className="flex items-center gap-2">
-                      <h3 className="text-base sm:text-lg font-bold text-white truncate">Utkarsh Kulkarni</h3>
-                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
+
+                  {/* Floating Identity & Resume Controls */}
+                  <div className="absolute bottom-3 inset-x-3 p-3.5 rounded-xl bg-slate-900/95 backdrop-blur-md border border-slate-800 space-y-2 shadow-xl">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h3 className="text-base font-bold text-white tracking-tight flex items-center gap-1.5">
+                          <span>Utkarsh Kulkarni</span>
+                          <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                        </h3>
+                        <p className="text-xs text-slate-300 font-mono">Java & Full-Stack Engineer</p>
+                      </div>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                        SDE-1
+                      </span>
                     </div>
-                    <p className="text-xs text-slate-300 font-mono">Java & Full-Stack Engineer</p>
-                    <div className="flex flex-wrap items-center gap-2 pt-1">
+
+                    <div className="flex items-center gap-2 pt-0.5 text-xs font-mono">
                       <a
                         href="/resume"
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-xs font-mono hover:bg-emerald-500/25 transition-colors"
+                        className="flex-1 text-center py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold transition-all shadow flex items-center justify-center gap-1.5"
                       >
-                        <Download className="w-3 h-3" />
-                        <span>PDF Resume</span>
+                        <Download className="w-3.5 h-3.5" />
+                        <span>Resume (PDF)</span>
                       </a>
                       <a
                         href="https://drive.google.com/file/d/1z5NkNMihH-HB-8BeAvzep0o-sT626m_z/view?usp=sharing"
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700 text-xs font-mono hover:text-white transition-colors"
+                        className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-cyan-300 border border-slate-700 transition-colors flex items-center gap-1"
+                        title="Google Drive Mirror"
                       >
-                        <ExternalLink className="w-3 h-3" />
+                        <ExternalLink className="w-3.5 h-3.5" />
                         <span>Drive</span>
                       </a>
                     </div>

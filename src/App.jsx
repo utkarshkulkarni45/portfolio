@@ -59,6 +59,24 @@ const Phone = ({ className = "w-4 h-4" }) => (
   </svg>
 );
 
+const FileText = ({ className = "w-4 h-4" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+    <polyline points="14 2 14 8 20 8"/>
+    <line x1="16" y1="13" x2="8" y2="13"/>
+    <line x1="16" y1="17" x2="8" y2="17"/>
+    <line x1="10" y1="9" x2="8" y2="9"/>
+  </svg>
+);
+
+const Download = ({ className = "w-4 h-4" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+    <polyline points="7 10 12 15 17 10"/>
+    <line x1="12" y1="15" x2="12" y2="3"/>
+  </svg>
+);
+
 export default function App() {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
@@ -204,10 +222,20 @@ export default function App() {
             <a href="#contact" className="hover:text-emerald-400 transition-colors">Contact</a>
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <a
+              href="/resume"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/20 transition-all"
+            >
+              <FileText className="w-3.5 h-3.5" />
+              <span>Resume</span>
+            </a>
+
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/20 transition-all"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium px-3.5 py-1.5 rounded-full bg-slate-800/80 text-slate-200 border border-slate-700 hover:bg-slate-700 transition-all"
             >
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="hidden sm:inline">Open to Roles</span>
@@ -233,9 +261,19 @@ export default function App() {
         <section id="about" className="relative pt-6 sm:pt-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-xs font-mono text-emerald-400">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Backend Specialist • Full-Stack Engineer</span>
+              <div className="flex items-center gap-3">
+                <div className="relative group shrink-0">
+                  <img
+                    src="/ProfilePhoto.jpg"
+                    alt="Utkarsh Kulkarni"
+                    className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover ring-2 ring-emerald-400/80 shadow-lg shadow-emerald-500/20"
+                  />
+                  <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-400 border-2 border-[#090d16] rounded-full" />
+                </div>
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-xs font-mono text-emerald-400">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Backend Specialist • Full-Stack Engineer</span>
+                </div>
               </div>
 
               <div className="space-y-3">
@@ -250,16 +288,37 @@ export default function App() {
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <a
-                  href="#projects"
+                  href="/resume"
+                  target="_blank"
+                  rel="noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm transition-all shadow-lg shadow-emerald-500/25 hover:shadow-emerald-400/35"
                 >
-                  <span>Explore Featured Work</span>
+                  <FileText className="w-4 h-4" />
+                  <span>View Resume (PDF)</span>
+                </a>
+
+                <a
+                  href="https://drive.google.com/file/d/1z5NkNMihH-HB-8BeAvzep0o-sT626m_z/view?usp=sharing"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 border border-slate-700 text-cyan-300 font-medium text-sm transition-all"
+                  title="Google Drive Resume Link"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  <span>Drive Resume</span>
+                </a>
+
+                <a
+                  href="#projects"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 text-slate-200 font-medium text-sm transition-all"
+                >
+                  <span>Featured Work</span>
                   <ChevronRight className="w-4 h-4" />
                 </a>
 
                 <button
                   onClick={handleCopyEmail}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 border border-slate-700 text-slate-200 font-medium text-sm transition-all"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 text-slate-200 font-medium text-sm transition-all"
                 >
                   {copiedEmail ? (
                     <>
@@ -278,7 +337,7 @@ export default function App() {
                   href="https://www.linkedin.com/in/utkarshkulkarni101/"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 text-slate-300 hover:text-cyan-400 text-sm transition-all"
+                  className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 text-slate-300 hover:text-cyan-400 text-sm transition-all"
                 >
                   <Linkedin className="w-4 h-4" />
                   <span>LinkedIn</span>
@@ -288,7 +347,7 @@ export default function App() {
                   href="https://leetcode.com/u/utkarshkulkarni101/"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 text-slate-300 hover:text-amber-400 text-sm transition-all"
+                  className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 text-slate-300 hover:text-amber-400 text-sm transition-all"
                 >
                   <Code2 className="w-4 h-4" />
                   <span>LeetCode</span>
@@ -298,7 +357,7 @@ export default function App() {
                   href="https://www.instagram.com/a_simple_persona_/?hl=en"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 text-slate-300 hover:text-pink-400 text-sm transition-all"
+                  className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 text-slate-300 hover:text-pink-400 text-sm transition-all"
                 >
                   <Instagram className="w-4 h-4" />
                   <span>Instagram</span>
@@ -322,8 +381,54 @@ export default function App() {
               </div>
             </div>
 
-            {/* Interactive Terminal Window */}
-            <div className="lg:col-span-5">
+            {/* Right Column: Profile Photo Card & Interactive Terminal */}
+            <div className="lg:col-span-5 space-y-4">
+              {/* Profile Photo Identity Card */}
+              <div className="rounded-2xl border border-slate-800 bg-[#0d121f]/90 p-4 sm:p-5 backdrop-blur shadow-xl relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
+                <div className="flex items-center gap-4">
+                  <div className="relative shrink-0">
+                    <img
+                      src="/ProfilePhoto.jpg"
+                      alt="Utkarsh Kulkarni"
+                      className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover ring-2 ring-emerald-500/50 shadow-xl shadow-emerald-500/25 group-hover:scale-105 transition-all duration-300"
+                    />
+                    <div className="absolute -bottom-1 -right-1 px-2 py-0.5 rounded-full bg-emerald-500 text-slate-950 text-[10px] font-bold font-mono tracking-tight flex items-center gap-1 shadow">
+                      <span className="w-1.5 h-1.5 rounded-full bg-slate-950 animate-pulse" />
+                      ACTIVE
+                    </div>
+                  </div>
+                  <div className="space-y-1.5 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-base sm:text-lg font-bold text-white truncate">Utkarsh Kulkarni</h3>
+                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                    </div>
+                    <p className="text-xs text-slate-300 font-mono">Java & Full-Stack Engineer</p>
+                    <div className="flex flex-wrap items-center gap-2 pt-1">
+                      <a
+                        href="/resume"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-xs font-mono hover:bg-emerald-500/25 transition-colors"
+                      >
+                        <Download className="w-3 h-3" />
+                        <span>PDF Resume</span>
+                      </a>
+                      <a
+                        href="https://drive.google.com/file/d/1z5NkNMihH-HB-8BeAvzep0o-sT626m_z/view?usp=sharing"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700 text-xs font-mono hover:text-white transition-colors"
+                      >
+                        <ExternalLink className="w-3 h-3" />
+                        <span>Drive</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Interactive Terminal Window */}
               <div className="rounded-xl border border-slate-800 bg-[#0d121f]/90 backdrop-blur shadow-2xl overflow-hidden">
                 {/* Terminal Header */}
                 <div className="px-4 py-3 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
@@ -348,12 +453,7 @@ export default function App() {
                   <div className="p-3 rounded-lg bg-black/40 border border-slate-800/80 text-slate-300 space-y-1">
                     <p><span className="text-purple-400">"candidate"</span>: <span className="text-emerald-300">"Utkarsh Kulkarni"</span>,</p>
                     <p><span className="text-purple-400">"primaryRole"</span>: <span className="text-emerald-300">"Java Backend Engineer"</span>,</p>
-                    <p><span className="text-purple-400">"coreExpertise"</span>: [</p>
-                    <p className="pl-4 text-cyan-300">"Spring Boot Microservices",</p>
-                    <p className="pl-4 text-cyan-300">"Relational DB Design (MySQL)",</p>
-                    <p className="pl-4 text-cyan-300">"Distributed AI Pipelines (Gemini)",</p>
-                    <p className="pl-4 text-cyan-300">"REST API Security & DTO Mapping"</p>
-                    <p>],</p>
+                    <p><span className="text-purple-400">"resumeUrl"</span>: <span className="text-cyan-300">"https://portfolio-taupe-beta-5yi42qs5d5.vercel.app/resume"</span>,</p>
                     <p><span className="text-purple-400">"phone"</span>: <span className="text-cyan-300">"+91 95450 91371"</span>,</p>
                     <p><span className="text-purple-400">"email"</span>: <span className="text-emerald-300">"utkarshkulkarni101@gmail.com"</span>,</p>
                     <p><span className="text-purple-400">"status"</span>: <span className="text-amber-300">"Ready for Intern / SDE-1 Roles"</span></p>
@@ -762,6 +862,32 @@ export default function App() {
 
                   <div className="flex items-center justify-between p-3 rounded-lg bg-slate-900 border border-slate-800">
                     <div className="flex items-center gap-2 text-slate-300">
+                      <FileText className="w-4 h-4 text-emerald-400" />
+                      <span>Resume (Curriculum Vitae)</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <a
+                        href="/resume"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="px-2.5 py-1 rounded bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 text-[11px] font-mono transition-colors flex items-center gap-1"
+                      >
+                        <Download className="w-3 h-3" />
+                        <span>PDF</span>
+                      </a>
+                      <a
+                        href="https://drive.google.com/file/d/1z5NkNMihH-HB-8BeAvzep0o-sT626m_z/view?usp=sharing"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] font-mono transition-colors"
+                      >
+                        Drive
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-slate-900 border border-slate-800">
+                    <div className="flex items-center gap-2 text-slate-300">
                       <Instagram className="w-4 h-4 text-pink-400" />
                       <span>@a_simple_persona_</span>
                     </div>
@@ -870,6 +996,9 @@ export default function App() {
             </a>
             <a href="https://www.instagram.com/a_simple_persona_/?hl=en" target="_blank" rel="noreferrer" className="hover:text-pink-400 transition-colors">
               Instagram
+            </a>
+            <a href="/resume" target="_blank" rel="noreferrer" className="text-emerald-400 hover:text-emerald-300 font-semibold transition-colors">
+              Resume (PDF)
             </a>
             <a href="#about" className="hover:text-emerald-400 transition-colors">
               Back to Top ↑
